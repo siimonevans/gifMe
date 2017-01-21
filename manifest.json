@@ -6,5 +6,27 @@
   "orientation": "portrait",
   "start_url": "index.html",
   "theme_color": "#190728",
-  "background_color": "#190728"
+  "background_color": "#190728",
+  "icons": [
+    {
+      "src": "img/icon-60.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-114.png",
+      "sizes": "114x114",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-196.png",
+      "sizes": "196x196",
+      "type": "image/png"
+    }
+  ]
 }
