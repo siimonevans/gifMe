@@ -1,0 +1,10 @@
+{
+  "short_name": "gifMe",
+  "name": "gifMe",
+  "description" : "Search for your favourite gifs",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#190728",
+  "background_color": "#190728"
+}
