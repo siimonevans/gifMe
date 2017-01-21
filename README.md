@@ -2,4 +2,4 @@
 
 A simple gif search tool that uses the [gifbase API.](http://gifbase.com/api)
 
-View the demo [here.](https://sii.im/playground/gifme)
+View the demo [here.](http://sii.im/playground/gifme)
