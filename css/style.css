@@ -11,7 +11,7 @@ body {
 
 body {
   min-height: 100vh;
-  background-color: #190728;
+  background-color: #2f0624;
 }
 
 .landing {
@@ -27,25 +27,9 @@ body {
   transform: translateY(-50%);
 }
 
-.landing__wrapper:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to bottom, #0b0115, #190728);
-  opacity: 0;
-  transition: opacity 3000ms ease;
-}
-
 .landing__wrapper--reduce {
   top: auto;
   transform: translate3d(0,0,0);
-}
-
-.landing__wrapper--reduce:after {
-  opacity: 1;
 }
 
 .landing__heading {
