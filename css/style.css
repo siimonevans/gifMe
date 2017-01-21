@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: Helvetica Neue, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #190728;
+}
+
+.gifs {
+  padding: 50px;
+}
+
+.gif-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -30px;
+  
+  /* Inline-block fallback */
+  letter-spacing: -0.31em;
+  text-rendering: optimizespeed;
+}
+
+.gif {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.2);
+  background-color: #000;
+
+  flex: 0 0 auto;
+  width: calc(25% - 30px);
+  height: 312.5px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  display: block;  /* IE fix */
+  
+  /* Inline-block fallback */
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  text-rendering: auto;
+}
+
+.gif__image {
+  height: 100%;
+}
+
+.gif__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gif__meta {
+  position: absolute;
+  bottom: 0;
+  background: #000;
+  width: 100%;
+  padding: 20px;
+  word-wrap: break-word;
+  font-size: 0;
+}
+
+.gif__tags {
+  color: #fff;
+  width: 33.333%;
+  display: inline-block;
+}
+
+.gif__url {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  line-height: 335px;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.gif:hover .gif__url {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+.gif__url svg {
+  width: 40px;
+  fill: #fff;
+}
+
+.load-more {
+  font-family: Helvetica Neue, sans-serif;
+  padding: 20px;
+  font-size: 14px;
+  background-color: #EA4C89;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+  transition: 
+    background-color 300ms ease,
+    opacity 1000ms ease;
+}
+
+.load-more:hover {
+  background-color: #b3285e;
+}
+
+.load-more:focus {
+  outline: 0;
+}
+
+.load-more--display {
+  opacity: 1;
+}
+
+
+@media screen and (max-width: 500px) {
+
+}
