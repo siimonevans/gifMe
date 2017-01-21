@@ -17,6 +17,10 @@ self.addEventListener('install', function(event) {
         'js/gif-search.js',
         'css/style.css',
         'manifest.json',
+        'img/icon-60.png',
+        'img/icon-114.png',
+        'img/icon-152.png',
+        'img/icon-196.png'
       ]);
     })
   );
