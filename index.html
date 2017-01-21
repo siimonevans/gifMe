@@ -5,23 +5,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
     <link href="css/style.css" rel="stylesheet">
     <meta name="application-name" content="GifMe" />
     <meta name="theme-color" content="#ffffff">
-    <link rel="manifest" href="manifest.json">
   </head>
   <body>
-    <form id="search-form">
-      <input id="search" type="search">
-    </form>
-    <div class="gifs">
-      <div class="meta">
-        <div class="meta__tag"></div>
-        <div class="meta__count"></div>
+    <div class="landing">
+      <div class="landing__wrapper">
+        <h1 class="landing__heading">gif<span>Me</span></h1>
+        <form class="landing__form" id="search-form">
+          <input class="landing__search" id="search" type="text" placeholder="Search the web for your gif needs">
+        </form>
       </div>
-      <div class="gif-list"></div>
-      <button class="load-more">Load more</button>
+      <div class="gifs">
+        <div class="meta">
+          <div class="meta__tag"></div>
+          <div class="meta__count"></div>
+        </div>
+        <div class="gif-list"></div>
+        <button class="load-more">Load more</button>
+      </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/gif-search.js"></script>

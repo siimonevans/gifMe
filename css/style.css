@@ -14,6 +14,81 @@ body {
   background-color: #190728;
 }
 
+.landing {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+.landing__wrapper {
+  position: relative;
+  padding: 50px 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.landing__wrapper:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #0b0115, #190728);
+  opacity: 0;
+  transition: opacity 3000ms ease;
+}
+
+.landing__wrapper--reduce {
+  top: auto;
+  transform: translate3d(0,0,0);
+}
+
+.landing__wrapper--reduce:after {
+  opacity: 1;
+}
+
+.landing__heading {
+  position: relative;
+  z-index: 2;
+  font-size: 45px;
+  font-weight: 100;
+  color: #fff;
+}
+
+.landing__heading span {
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+.landing__form {
+  position: relative;
+  z-index: 2;
+}
+
+.landing__search {
+  padding: 15px 24px;
+  font-family: Helvetica Neue, sans-serif;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 15px;
+  font-size: 18px;
+  background-color: transparent;
+  color: #d4d4d4;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 35px;
+  transition: border 300ms ease;
+}
+
+.landing__search:focus {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  outline: 0;
+}
+
+.meta {
+  display: none;
+}
+
 .gifs {
   padding: 50px;
 }
@@ -111,6 +186,7 @@ body {
   border: 0;
   width: 100%;
   cursor: pointer;
+  display: none;
   transition: 
     background-color 300ms ease,
     opacity 1000ms ease;
@@ -126,6 +202,7 @@ body {
 
 .load-more--display {
   opacity: 1;
+  display: block;
 }
 
 

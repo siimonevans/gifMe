@@ -3,12 +3,14 @@ $(document).ready(function () {
     var gifLoader = function() {
 
       var $input              = $( '#search' ),
+          $introWrapper       = $( '.landing__wrapper' ),
           $searchForm         = $( '#search-form' ),
           $gifList            = $( '.gif-list' ),
           $gifTag             = $( '.meta__tag' ),
           $gifCount           = $( '.meta__count' ),
           $loadMore           = $( '.load-more' ),
           loadMoreDisplay     = 'load-more--display',
+          introWrapperHide    = 'landing__wrapper--reduce',
           proxyUrl            = 'https://query.yahooapis.com/v1/public/yql',
           loadCount           = 2;
 
@@ -90,6 +92,8 @@ $(document).ready(function () {
 
             // Show/hide load more button
             loadMoreButton( pageCount );
+            
+            $introWrapper.addClass( introWrapperHide );
           },
         });
       }
