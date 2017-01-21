@@ -205,7 +205,59 @@ body {
   display: block;
 }
 
+.info,
+.twitter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 15px 15px 12px 15px;
+  transition:
+    background-color 300ms ease;
+}
 
 @media screen and (max-width: 500px) {
-
+  .info,
+  .twitter {
+    position: absolute;
+    z-index: 2;
+  }
 }
+
+@media screen and (max-width: 500px) {
+ .info {
+  right: 40px;
+ } 
+}
+
+.twitter {
+  top: 45px;
+}
+
+@media screen and (max-width: 500px) {
+ .twitter {
+  top: 0;
+ } 
+}
+
+.info svg,
+.twitter svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+  transition:
+    fill 300ms ease;
+}
+
+@media screen and (max-width: 500px) {
+ .info svg,
+ .twitter svg {
+  width: 20px;
+  fill: #333;
+ } 
+}
+
+.info:hover svg,
+.twitter:hover svg {
+  fill: #333;
+}
+
