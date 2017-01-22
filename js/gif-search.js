@@ -2,9 +2,9 @@ $(document).ready(function () {
 
     var gifLoader = function() {
 
-      var $input              = $( 'landing__search' ),
-          $introWrapper       = $( '.landing__wrapper' ),
+      var $input              = $( '.landing__search' ),
           $searchForm         = $( '.landing__form' ),
+          $introWrapper       = $( '.landing__wrapper' ),
           $gifList            = $( '.gif-list' ),
           $gifTag             = $( '.meta__tag' ),
           $gifCount           = $( '.meta__count' ),
