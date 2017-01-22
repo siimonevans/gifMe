@@ -181,7 +181,7 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 11px rgba(0, 0, 0, 0.2);
-  background-color: #000;
+  background-color: #714d9e;
   flex: 0 0 auto;
   width: calc(25% - 30px);
   height: 312.5px;
@@ -261,7 +261,8 @@ body {
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 2px;
-  width: 100%;
+  min-width: 200px;
+  margin: 0 auto;
   cursor: pointer;
   display: none;
   background-color: transparent;
