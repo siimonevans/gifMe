@@ -11,7 +11,34 @@ body {
 
 body {
   min-height: 100vh;
-  background-color: #2f0624;
+  overflow: auto;
+  background-image: linear-gradient(155deg, rgba(97, 62, 178, 0.83), #c13c73);
+  background: linear-gradient(90deg, #7d5ebd, #c13c73, #c5915f);
+  background-size: 600% 600%;
+  animation: gradient-animation 30s ease infinite;
+}
+
+@keyframes gradient-animation { 
+    10% { background-position: 0 48% }
+    50% { background-position: 100% 53% }
+    100% { background-position: 0 48% }
+}
+
+@keyframes fadein {
+  from { 
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  
+  to { 
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.body--block {
+  background-image: linear-gradient(155deg, rgba(97, 62, 178, 0.83), #c13c73);
+  animation: none;
 }
 
 .landing {
@@ -45,6 +72,7 @@ body {
   font-size: 45px;
   font-weight: 100;
   color: #fff;
+  animation: fadein 1s;
 }
 
 .landing__heading span {
@@ -55,6 +83,7 @@ body {
 .landing__form {
   position: relative;
   z-index: 2;
+  animation: fadein 1s;
 }
 
 .landing__search {
@@ -65,15 +94,56 @@ body {
   margin-top: 15px;
   font-size: 18px;
   background-color: transparent;
-  color: #d4d4d4;
+  color: #fff;
   border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 35px;
   transition: border-color 300ms ease;
+  animation: fadein 1s;
+}
+
+::-webkit-input-placeholder {
+   color: rgba(255, 255, 255, 0.6);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba(255, 255, 255, 0.9);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(255, 255, 255, 0.9);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba(255, 255, 255, 0.9);  
 }
 
 .landing__search:focus {
   border-color: rgba(255, 255, 255, 0.8);
   outline: 0;
+}
+
+.landing__credit {
+  color: rgba(255, 255, 255, 0.71);
+  font-size: 9px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  animation: fadein 1s;
+}
+
+.landing__credit a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+  transition:
+    border-color 300ms ease,
+    color 300ms ease;
+}
+
+.landing__credit a:hover {
+  color: #fff;
+  border-color: #fff;
 }
 
 .meta {
@@ -188,22 +258,25 @@ body {
   font-family: Helvetica Neue, sans-serif;
   padding: 20px;
   font-size: 14px;
-  background-color: #EA4C89;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 2px;
-  opacity: 0;
-  border: 0;
   width: 100%;
   cursor: pointer;
   display: none;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 35px;
   transition: 
     background-color 300ms ease,
+    border 300ms ease,
     opacity 1000ms ease;
 }
 
 .load-more:hover {
-  background-color: #b3285e;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 .load-more:focus {
@@ -211,7 +284,6 @@ body {
 }
 
 .load-more--display {
-  opacity: 1;
   display: block;
 }
 

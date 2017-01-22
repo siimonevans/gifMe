@@ -9,6 +9,7 @@ $(document).ready(function () {
           $gifTag             = $( '.meta__tag' ),
           $gifCount           = $( '.meta__count' ),
           $loadMore           = $( '.load-more' ),
+          bodyBlock           = 'body--block',
           loadMoreDisplay     = 'load-more--display',
           introWrapperHide    = 'landing__wrapper--reduce',
           proxyUrl            = 'https://query.yahooapis.com/v1/public/yql',
@@ -94,6 +95,7 @@ $(document).ready(function () {
             loadMoreButton( pageCount );
 
             $introWrapper.addClass( introWrapperHide );
+            $( 'body' ).addClass( bodyBlock );
           },
         });
       }
