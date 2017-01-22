@@ -45,9 +45,10 @@ var gifLoader = function() {
 
   // Search images
   function searchGifs() {
-    var inputValue        = $input.val(),
+    var rawValue          = $input.val(),
+        inputValue        = rawValue.replace(/\s/g, ""),
         gifBase           = 'http://gifbase.com/tag/' + inputValue + '?format=json';
-    
+
     if ( inputValue.trim().length == 0 ) {
       $noResults.addClass( noResultsDisplay );
       $loadMore.removeClass( loadMoreDisplay );
@@ -62,7 +63,8 @@ var gifLoader = function() {
 
   // Load more images
   function loadMoreGifs() {
-    var inputValue        = $input.val(),
+    var rawValue          = $input.val(),
+        inputValue        = rawValue.replace(/\s/g, ""),
         gifBase           = 'http://gifbase.com/tag/' + inputValue + '?p=' + loadCount + '&format=json';
 
     gifCollect( inputValue, gifBase )
