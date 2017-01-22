@@ -57,13 +57,19 @@ body {
 
 @media screen and (max-width: 500px) {
   .landing__wrapper {
-    padding-bottom: 30px;
+    padding: 0 0 30px;
   }
 }
 
 .landing__wrapper--reduce {
   top: auto;
   transform: translate3d(0,0,0);
+}
+
+@media screen and (max-width: 500px) {
+  .landing__wrapper--reduce {
+    padding-top: 30px;
+  }
 }
 
 .landing__heading {
@@ -382,6 +388,12 @@ body {
   border-radius: 30px;
   background: #fff;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 500px) {
+  .modal {
+    width: calc(100% - 40px);
+  }
 }
 
 .modal__close {
