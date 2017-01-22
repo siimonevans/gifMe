@@ -207,6 +207,7 @@ body {
   height: 312.5px;
   margin-left: 30px;
   margin-bottom: 30px;
+  border-radius: 20px;
   display: block;
   
   // Fallback
@@ -262,6 +263,7 @@ body {
   line-height: 335px;
   opacity: 0;
   transition: all 300ms ease;
+  border-radius: 20px;
 }
 
 .gif:hover .gif__url {
@@ -358,4 +360,67 @@ body {
  .twitter svg {
   width: 20px;
  } 
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(130, 91, 184, 0.9);
+  display: none;
+}
+
+.modal {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  margin: auto;
+  padding: 20px 28px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal__close {
+  position: absolute;
+  top: -18px;
+  right: -11px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 0;
+  background-color: #ff9c44;
+  box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition:
+    background-color 300ms ease;
+}
+
+.modal__close:focus {
+  outline: 0;
+}
+
+.modal__close:hover {
+  background-color: #f78621;
+}
+
+.modal__close svg {
+  fill: #fff;
+}
+
+.modal__content {
+  color: #5d5d5d;
+  font-family: Helvetica Neue, sans-serif;
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.modal__content:focus {
+  outline: 0;
 }
