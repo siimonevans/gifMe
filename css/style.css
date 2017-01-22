@@ -146,6 +146,26 @@ body {
   border-color: #fff;
 }
 
+.landing__no-results {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 200px;
+  padding: 13px;
+  margin: 20px auto auto;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  background-color: #ff9c44;
+  display: none;
+}
+
+.landing__no-results--display {
+  display: inline-block;
+}
+
 .meta {
   display: none;
 }

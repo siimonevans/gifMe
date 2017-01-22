@@ -5,10 +5,12 @@ $(document).ready(function () {
       var $input              = $( '.landing__search' ),
           $searchForm         = $( '.landing__form' ),
           $introWrapper       = $( '.landing__wrapper' ),
+          $noResults          = $( '.landing__no-results' ),
           $gifList            = $( '.gif-list' ),
           $gifTag             = $( '.meta__tag' ),
           $gifCount           = $( '.meta__count' ),
           $loadMore           = $( '.load-more' ),
+          noResultsDisplay    = 'landing__no-results--display'
           bodyBlock           = 'body--block',
           loadMoreDisplay     = 'load-more--display',
           introWrapperHide    = 'landing__wrapper--reduce',
@@ -48,8 +50,16 @@ $(document).ready(function () {
         var inputValue        = $input.val(),
             gifBase           = 'http://gifbase.com/tag/' + inputValue + '?format=json';
         
+        if ( inputValue.trim().length == 0 ) {
+          $noResults.addClass( noResultsDisplay );
+          $loadMore.removeClass( loadMoreDisplay );
+        } else {
+          gifCollect( inputValue, gifBase );
+          $noResults.removeClass( noResultsDisplay );
+        }
+
         emptyList();
-        gifCollect( inputValue, gifBase );
+        
       }
 
       // Load more images
@@ -94,21 +104,29 @@ $(document).ready(function () {
 
           'success': function(response) {
 
-            // Set response vars
-            var response      = response['query']['results']['json'];
-                gifArray      = response['gifs'],
-                gifTag        = response['tag'],
-                gifCount      = response['gif_count'],
-                pageCount     = response['page_count'];
+            if ( response['query']['results']['error'] ) {
+              $noResults.addClass( noResultsDisplay );
+            } else {
+              // Set response vars
+              var response      = response['query']['results']['json'];
+                  gifArray      = response['gifs'],
+                  gifTag        = response['tag'],
+                  gifCount      = response['gif_count'],
+                  pageCount     = response['page_count'];
 
-            // Update meta
-            setMeta( gifTag, gifCount );
+              // Hide error/load more
+              $noResults.removeClass( noResultsDisplay );
+              $loadMore.removeClass( loadMoreDisplay );
 
-            // Populate image list
-            populateGifs( gifArray );
+              // Update meta
+              setMeta( gifTag, gifCount );
 
-            // Update UI
-            updateUI( pageCount );
+              // Populate image list
+              populateGifs( gifArray );
+
+              // Update UI
+              updateUI( pageCount );
+            }            
           },
         });
       }
