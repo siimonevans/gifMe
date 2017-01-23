@@ -119,6 +119,7 @@ var gifLoader = function() {
         // Catch queries with no results
         if ( response['query']['results']['error'] ) {
           $noResults.addClass( noResultsDisplay );
+          $loadMore.removeClass( loadMoreDisplay );
         } else {
 
           // Set response vars
