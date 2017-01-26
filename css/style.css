@@ -46,6 +46,11 @@ body {
   height: 100vh;
   padding: 0 20px;
   text-align: center;
+  display: none;
+}
+
+.body--display .landing {
+  display: block;
 }
 
 .landing__wrapper {

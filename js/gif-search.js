@@ -2,26 +2,20 @@ var gifLoader = function() {
 
   var $input              = $( '.landing__search' ),
       $searchForm         = $( '.landing__form' ),
+      $searchInput        = $( '.landing__search' ),
       $introWrapper       = $( '.landing__wrapper' ),
       $noResults          = $( '.landing__no-results' ),
       $gifWrapper         = $( '.gif' ),
       $gifList            = $( '.gif-list' ),
-      $gifTag             = $( '.meta__tag' ),
-      $gifCount           = $( '.meta__count' ),
       $loadMore           = $( '.load-more' ),
       noResultsDisplay    = 'landing__no-results--display'
       bodyBlock           = 'body--block',
+      bodyDisplay         = 'body--display',
       loadMoreDisplay     = 'load-more--display',
       introWrapperHide    = 'landing__wrapper--reduce',
       proxyUrl            = 'https://query.yahooapis.com/v1/public/yql',
       loadCount           = 2,
       gifCount            = 0;          
-
-  // Update meta values
-  function setMeta( gifTag, gifCount ) {
-    $gifTag.text( gifTag );
-    $gifCount.text( gifCount );
-  }
 
   // Empty image listing
   function emptyList() {
@@ -55,7 +49,54 @@ var gifLoader = function() {
 
   }
 
-  // Search images
+  // Show 'Load more' button if there are 
+  // more results available
+  function loadMoreButton( pageCount ) {
+    if ( pageCount > 1 ) {
+      $loadMore.addClass( loadMoreDisplay );
+    } else {
+      $loadMore.removeClass( loadMoreDisplay );
+    }
+  }
+
+  // Update DOM elements after load more
+  function updateUI( pageCount ) {
+    loadMoreButton( pageCount );
+    $introWrapper.addClass( introWrapperHide );
+    $( 'body' ).addClass( bodyBlock );
+  }
+
+  // Update input from loaded URL
+  function updateForm( searchWord ) {
+    $searchInput.val( searchWord );
+  }
+
+  // Update form UI
+  function displayContent( timing ) {
+    setTimeout(function() {
+      $( 'body' ).addClass( bodyDisplay );
+    }, timing);
+  }
+
+  // Search images from URL
+  function searchOnLoad() {
+    var loadedURL         = $(location).attr('search');
+
+    // Only proceed if parameter exists
+    if ( loadedURL != '' ) {
+      var searchWord      = loadedURL.split("?")[1],
+          gifBase         = 'http://gifbase.com/tag/' + searchWord + '?format=json';
+      
+      gifCollect( gifBase );
+      updateForm( searchWord );
+      displayContent( 200 );
+
+    } else {
+      displayContent( 10 );
+    }
+  }
+
+  // Search images from input value
   function searchGifs() {
     var rawValue          = $input.val(),
         inputValue        = rawValue.replace(/\s/g, ""),
@@ -64,9 +105,13 @@ var gifLoader = function() {
     if ( inputValue.trim().length == 0 ) {
       $noResults.addClass( noResultsDisplay );
       $loadMore.removeClass( loadMoreDisplay );
+
     } else {
-      gifCollect( inputValue, gifBase );
+      gifCollect( gifBase );
       $noResults.removeClass( noResultsDisplay );
+
+      // Update URL
+        history.replaceState(null,null, window.location.pathname + '?' + inputValue)
     }
 
     emptyList();
@@ -79,29 +124,12 @@ var gifLoader = function() {
         inputValue        = rawValue.replace(/\s/g, ""),
         gifBase           = 'http://gifbase.com/tag/' + inputValue + '?p=' + loadCount + '&format=json';
 
-    gifCollect( inputValue, gifBase )
+    gifCollect( gifBase )
     loadCount++;
   }
 
-  // Show 'Load more' button if there are 
-  // more results available
-  function loadMoreButton( pageCount ) {
-    if ( pageCount > 1 ) {
-      $loadMore.addClass( loadMoreDisplay );
-    } else {
-      $loadMore.removeClass( loadMoreDisplay );
-    }
-  }
-
-  // Update DOM elements
-  function updateUI( pageCount ) {
-    loadMoreButton( pageCount );
-    $introWrapper.addClass( introWrapperHide );
-    $( 'body' ).addClass( bodyBlock );
-  }
-
-  // Grab images
-  function gifCollect( inputValue, gifBase ) {
+  // Grab images from gifbase
+  function gifCollect( gifBase ) {
 
     // Process via proxy to avoid CORS errors
     $.ajax({
@@ -133,9 +161,6 @@ var gifLoader = function() {
           $noResults.removeClass( noResultsDisplay );
           $loadMore.removeClass( loadMoreDisplay );
 
-          // Update meta
-          setMeta( gifTag, gifCount );
-
           // Populate image list
           populateGifs( gifArray );
 
@@ -155,6 +180,11 @@ var gifLoader = function() {
     $searchForm.on( 'submit', function () {
       searchGifs();
       return false;
+    });
+
+    // Initial search
+    $(window).on( 'load', function () {
+      searchOnLoad();
     });
 
     // Load more
