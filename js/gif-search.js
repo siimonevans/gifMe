@@ -109,7 +109,7 @@ var gifLoader = function() {
       $noResults.removeClass( noResultsDisplay );
 
       // Update URL
-        history.replaceState(null,null, window.location.pathname + '?' + inputValue)
+      history.replaceState(null, null, window.location.pathname + '?' + inputValue)
     }
 
     emptyList();
