@@ -9,7 +9,6 @@ var gifLoader = function() {
       $gifList            = $( '.gif-list' ),
       $loadMore           = $( '.load-more' ),
       noResultsDisplay    = 'landing__no-results--display'
-      bodyBlock           = 'body--block',
       bodyDisplay         = 'body--display',
       loadMoreDisplay     = 'load-more--display',
       introWrapperHide    = 'landing__wrapper--reduce',
@@ -63,7 +62,6 @@ var gifLoader = function() {
   function updateUI( pageCount ) {
     loadMoreButton( pageCount );
     $introWrapper.addClass( introWrapperHide );
-    $( 'body' ).addClass( bodyBlock );
   }
 
   // Update input from loaded URL
