@@ -208,7 +208,7 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 11px rgba(0, 0, 0, 0.2);
-  background-color: #714d9e;
+  background-color: rgba(255, 255, 255, 0.1);
   flex: 0 0 auto;
   width: calc(25% - 30px);
   height: 312.5px;
