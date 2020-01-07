@@ -12,7 +12,7 @@ var gifLoader = function() {
         bodyDisplay             = 'body--display',
         loadMoreDisplay         = 'load-more--display',
         introWrapperHide        = 'landing__wrapper--reduce',
-        proxyUrl                = 'https://query.yahooapis.com/v1/public/yql',
+        proxyUrl                = 'https://api.allorigins.win/get?url=',
         loadCount               = 2,
         gifCount                = 0;
 
@@ -48,7 +48,7 @@ var gifLoader = function() {
 
     }
 
-    // Show 'Load more' button if there are 
+    // Show 'Load more' button if there are
     // more results available
     function loadMoreButton(pageCount) {
         if (pageCount > 1) {
@@ -128,44 +128,35 @@ var gifLoader = function() {
 
     // Grab images from gifBase
     function gifCollect(gifBase) {
-        $.ajax({
-            'url': proxyUrl,
-            'data': {
-                'q': 'SELECT * FROM json WHERE url="' + gifBase + '"',
-                'format': 'json',
-                'jsonCompat': 'new',
-            },
-            'dataType': 'jsonp',
+        $.getJSON(proxyUrl + encodeURIComponent(gifBase), function (data) {
 
-            'success': function(response) {
+            let response = JSON.parse(data.contents);
 
-                // Catch queries with no results
-                if (response.query.results.error) {
-                    $noResults.addClass(noResultsDisplay);
-                    $loadMore.removeClass(loadMoreDisplay);
-                } else {
+            // Catch queries with no results
+            if (response.error) {
+                $noResults.addClass(noResultsDisplay);
+                $loadMore.removeClass(loadMoreDisplay);
+            } else {
 
-                    // Set response vars
-                    var response    = response.query.results.json,
-                        gifArray    = response.gifs,
-                        gifTag      = response.tag,
-                        gifCount    = response.gif_count,
-                        pageCount   = response.page_count;
+                // Set response vars
+                var gifArray    = response.gifs,
+                    gifTag      = response.tag,
+                    gifCount    = response.gif_count,
+                    pageCount   = response.page_count;
 
-                    // Hide error/load more
-                    $noResults.removeClass(noResultsDisplay);
-                    $loadMore.removeClass(loadMoreDisplay);
+                // Hide error/load more
+                $noResults.removeClass(noResultsDisplay);
+                $loadMore.removeClass(loadMoreDisplay);
 
-                    // Populate image list
-                    populateGifs(gifArray);
+                // Populate image list
+                populateGifs(gifArray);
 
-                    // Update UI
-                    updateUI(pageCount);
+                // Update UI
+                updateUI(pageCount);
 
-                    // Update modal
-                    modal();
-                }
-            },
+                // Update modal
+                modal();
+            }
         });
     }
 
